@@ -6,16 +6,16 @@ import DomBodies from './factory/DomBodies.js';
 import DomMouseConstraint from './constraint/DomMouseConstraint.js';
 import Engine from './core/Engine.js';
 
-var MatterKrijuarPlugin = {
-    name: 'matter-krijuar-plugin',
+var MatterDomPlugin = {
+    name: 'matter-dom-plugin',
     version: '1.0.0',
     for: 'matter-js@^0.18.0',
     install: function(matter){
-        MatterKrijuarPlugin.installRenderDom(matter);
-        MatterKrijuarPlugin.installDomBody(matter);
-        MatterKrijuarPlugin.installDomBodies(matter); // Depends on DomBody
-        MatterKrijuarPlugin.installDomMouseConstraint(matter);
-        MatterKrijuarPlugin.installEngine(matter);
+        MatterDomPlugin.installRenderDom(matter);
+        MatterDomPlugin.installDomBody(matter);
+        MatterDomPlugin.installDomBodies(matter); // Depends on DomBody
+        MatterDomPlugin.installDomMouseConstraint(matter);
+        MatterDomPlugin.installEngine(matter);
     },
     installRenderDom: function(matter){
         console.log("Installing RenderDom module.");
@@ -39,8 +39,8 @@ var MatterKrijuarPlugin = {
     }
 };
 
-Matter.Plugin.register(MatterKrijuarPlugin);
+Matter.Plugin.register(MatterDomPlugin);
 // Plugin.register(MatterDomPlugin);
 
-const _MatterKrijuarPlugin = MatterKrijuarPlugin;
-export { _MatterKrijuarPlugin as MatterKrijuarPlugin };
+const _MatterDomPlugin = MatterDomPlugin;
+export { _MatterDomPlugin as MatterDomPlugin };

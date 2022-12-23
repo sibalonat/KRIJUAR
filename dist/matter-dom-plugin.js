@@ -2035,12 +2035,12 @@ var te = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
                   ee = ae < 0 ? 0 : ee;
                   var oe = ee * V;
                   Q > oe || -Q > oe ? (m = Q > 0 ? Q : -Q, c = v.friction * (Q > 0 ? 1 : -1) * n, c < -m ? c = -m : c > m && (c = m)) : (c = Q, m = r);
-                  var se = O * h - H * P, le = k * h - $ * P, fe = D / (L + x.inverseInertia * se * se + p.inverseInertia * le * le), j = (1 + v.restitution) * Y * fe;
+                  var se = O * h - H * P, le = k * h - $ * P, fe = D / (L + x.inverseInertia * se * se + p.inverseInertia * le * le), q = (1 + v.restitution) * Y * fe;
                   if (c *= fe, Y * Y > f && Y < 0)
                     F.normalImpulse = 0;
                   else {
                     var ce = F.normalImpulse;
-                    F.normalImpulse += j, F.normalImpulse = Math.min(F.normalImpulse, 0), j = F.normalImpulse - ce;
+                    F.normalImpulse += q, F.normalImpulse = Math.min(F.normalImpulse, 0), q = F.normalImpulse - ce;
                   }
                   if (Q * Q > t)
                     F.tangentImpulse = 0;
@@ -2048,8 +2048,8 @@ var te = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
                     var ve = F.tangentImpulse;
                     F.tangentImpulse += c, F.tangentImpulse < -m && (F.tangentImpulse = -m), F.tangentImpulse > m && (F.tangentImpulse = m), c = F.tangentImpulse - ve;
                   }
-                  var q = P * j + M * c, b = h * j + B * c;
-                  x.isStatic || x.isSleeping || (x.positionPrev.x += q * x.inverseMass, x.positionPrev.y += b * x.inverseMass, x.anglePrev += (O * b - H * q) * x.inverseInertia), p.isStatic || p.isSleeping || (p.positionPrev.x -= q * p.inverseMass, p.positionPrev.y -= b * p.inverseMass, p.anglePrev -= (k * b - $ * q) * p.inverseInertia);
+                  var j = P * q + M * c, b = h * q + B * c;
+                  x.isStatic || x.isSleeping || (x.positionPrev.x += j * x.inverseMass, x.positionPrev.y += b * x.inverseMass, x.anglePrev += (O * b - H * j) * x.inverseInertia), p.isStatic || p.isSleeping || (p.positionPrev.x -= j * p.inverseMass, p.positionPrev.y -= b * p.inverseMass, p.anglePrev -= (k * b - $ * j) * p.inverseInertia);
                 }
               }
             }
@@ -2572,18 +2572,18 @@ var te = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
     ]);
   });
 })(ge);
-var K = {};
+var Z = {};
 function me(T) {
   var N = T.Common, I = T.Composite, R = T.Events, d = T.Render, e, l;
   return typeof window < "u" && (e = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.msRequestAnimationFrame || function(s) {
     window.setTimeout(function() {
       s(N.now());
     }, 1e3 / 60);
-  }, l = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame), K.create = function(s) {
+  }, l = window.cancelAnimationFrame || window.mozCancelAnimationFrame || window.webkitCancelAnimationFrame || window.msCancelAnimationFrame), Z.create = function(s) {
     var a = {
       engine: null,
       element: window,
-      controller: K,
+      controller: Z,
       frameRequestId: null,
       options: {}
     }, u = s.engine, n = N.extend(a, s);
@@ -2637,20 +2637,20 @@ function me(T) {
       }
     });
     return d.run(i), n.DebugRender = i, n;
-  }, K.run = function(s) {
+  }, Z.run = function(s) {
     (function a(u) {
-      s.frameRequestId = e(a), K.world(s);
+      s.frameRequestId = e(a), Z.world(s);
     })();
-  }, K.stop = function(s) {
+  }, Z.stop = function(s) {
     l(s.frameRequestId);
-  }, K.world = function(s) {
+  }, Z.world = function(s) {
     var a = s.engine, u = a.world;
     I.allBodies(u), I.allConstraints(u);
     var n = document.querySelectorAll("[matter]"), f = {
       timestamp: a.timing.timestamp
     };
-    R.trigger(s, "beforeRender", f), K.bodies(s, n);
-  }, K.bodies = function(s, a, u) {
+    R.trigger(s, "beforeRender", f), Z.bodies(s, n);
+  }, Z.bodies = function(s, a, u) {
     var n = s.engine, f = n.world;
     s.options;
     for (var i = I.allBodies(f), t = 0; t < i.length; t++)
@@ -2658,7 +2658,7 @@ function me(T) {
         var c = r.parts[o], m = c.Dom.element, C = s.mapping.worldToView({ x: c.position.x, y: c.position.y }), w = { x: m.offsetWidth / 2, y: m.offsetHeight / 2 };
         m.style.position = "absolute", m.style.transform = `translate(${C.x - w.x}px, ${C.y - w.y}px)`, m.style.transform += `rotate(${r.angle}rad)`;
       }
-  }, K;
+  }, Z;
 }
 var J = {};
 function pe(T) {
@@ -2681,11 +2681,11 @@ function pe(T) {
     I.update.apply(null, arguments);
   }, J;
 }
-var Z = {};
+var K = {};
 function de(T) {
   T.Body;
   var N = T.Bodies, I = T.DomBody, R = T.Vertices, d = T.Common, e = T.World;
-  return T.Bounds, T.Vector, Z.create = function(l) {
+  return T.Bounds, T.Vector, K.create = function(l) {
     var s = l.bodyType, a = l.el, u = l.render, n = l.position;
     delete l.bodyType, delete l.render, delete l.position, l.domRenderer = u;
     var f = null, i = document.querySelector(a), t = u.mapping.viewToWorld({ x: n.x, y: n.y });
@@ -2694,7 +2694,7 @@ function de(T) {
         x: i.offsetWidth,
         y: i.offsetHeight
       });
-      f = Z.OGblock(
+      f = K.OGblock(
         t.x,
         t.y,
         r.x,
@@ -2703,7 +2703,7 @@ function de(T) {
       );
     } else if (s == "circle") {
       var o = u.mapping.viewToWorld(i.offsetWidth / 2);
-      f = Z.circle(
+      f = K.circle(
         t.x,
         t.y,
         o,
@@ -2711,7 +2711,7 @@ function de(T) {
       );
     }
     return f && e.add(u.engine.world, [f]), f;
-  }, Z.OGblock = function(l, s, a, u, f) {
+  }, K.OGblock = function(l, s, a, u, f) {
     var f = f || {}, i = {
       label: "Block Body",
       position: { x: l, y: s },
@@ -2728,7 +2728,7 @@ function de(T) {
       ), delete f.chamfer;
     }
     return I.create(d.extend({}, i, f));
-  }, Z.block = function(l, s, n) {
+  }, K.block = function(l, s, n) {
     var u = {
       Dom: {
         element: null,
@@ -2759,7 +2759,7 @@ function de(T) {
     }
     var m = I.create(d.extend({}, o, n));
     return m;
-  }, Z.circle = function(l, s, a, u, n) {
+  }, K.circle = function(l, s, a, u, n) {
     u = u || {};
     var f = {
       label: "Circle Body",
@@ -2767,8 +2767,8 @@ function de(T) {
     };
     n = n || 25;
     var i = Math.ceil(Math.max(10, Math.min(n, a)));
-    return i % 2 === 1 && (i += 1), Z.polygon(l, s, i, a, d.extend({}, f, u));
-  }, Z.polygon = function(l, s, a, u, n) {
+    return i % 2 === 1 && (i += 1), K.polygon(l, s, i, a, d.extend({}, f, u));
+  }, K.polygon = function(l, s, a, u, n) {
     if (n = n || {}, a < 3)
       return N.circle(l, s, u, n);
     for (var f = 2 * Math.PI / a, i = "", t = f * 0.5, r = 0; r < a; r += 1) {
@@ -2791,7 +2791,7 @@ function de(T) {
       ), delete n.chamfer;
     }
     return I.create(d.extend({}, C, n));
-  }, Z;
+  }, K;
 }
 var _ = {};
 function xe(T) {
@@ -2869,7 +2869,7 @@ function he(T) {
   };
 }
 var X = {
-  name: "matter-krijuar-plugin",
+  name: "matter-dom-plugin",
   version: "1.0.0",
   for: "matter-js@^0.18.0",
   install: function(T) {
@@ -2894,5 +2894,5 @@ var X = {
 ne.Matter.Plugin.register(X);
 const ye = X;
 export {
-  ye as MatterKrijuarPlugin
+  ye as MatterDomPlugin
 };
