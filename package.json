@@ -1,6 +1,6 @@
 {
   "name": "cli-dom-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Një plugin që aplikon efektin e fizikës prej matterjs tek elementët në HTML",
   "main": "./dist/matter-dom-plugin.umd.cjs",
   "module": "./dist/matter-dom-plugin.js",
