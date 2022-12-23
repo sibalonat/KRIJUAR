@@ -1,0 +1,34 @@
+{
+  "name": "matter-dom-plugin",
+  "version": "1.0.0",
+  "description": "Një plugin që aplikon efektin e fizikës prej matterjs tek elementët në HTML",
+  "main": "./dist/matter-dom-plugin.umd.cjs",
+  "module": "./dist/matter-dom-plugin.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/matter-dom-plugin.js",
+      "require": "./dist/matter-dom-plugin.umd.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "matter-js",
+    "plugin",
+    "physics",
+    "dom"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "matter-js": "^0.18.0",
+    "vite": "^4.0.3"
+  }
+}
